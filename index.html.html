@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生生護動｜專屬好禮兌換</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:    #0F6E56;
+    --teal-l:  #E1F5EE;
+    --teal-m:  #1D9E75;
+    --gold:    #BA7517;
+    --gold-l:  #FAEEDA;
+    --gold-m:  #EF9F27;
+    --coral:   #993C1D;
+    --coral-l: #FAECE7;
+    --ink:     #1a1a18;
+    --ink2:    #3d3d3a;
+    --ink3:    #73726c;
+    --bg:      #faf9f6;
+    --line:    rgba(0,0,0,0.08);
+    --radius:  14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+
+  /* ─── Header ─── */
+  .header {
+    background: var(--teal);
+    padding: 28px 24px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 18px,
+      rgba(255,255,255,0.04) 18px,
+      rgba(255,255,255,0.04) 19px
+    );
+  }
+  .logo-area {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin-bottom: 12px; position: relative;
+  }
+  .logo-mark {
+    width: 36px; height: 36px; background: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: var(--teal); flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px; font-weight: 700; color: white; letter-spacing: 2px;
+  }
+  .header-sub {
+    color: rgba(255,255,255,0.75); font-size: 13px; letter-spacing: 1px; position: relative;
+  }
+
+  /* ─── Section wrapper ─── */
+  .section {
+    max-width: 480px; margin: 0 auto; padding: 0 20px;
+  }
+
+  /* ─── Gift Card ─── */
+  .gift-card {
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    margin-top: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+  .gift-header {
+    background: var(--gold-l);
+    border-bottom: 1.5px solid rgba(186,117,23,0.15);
+    padding: 20px 24px 16px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .gift-icon {
+    width: 48px; height: 48px; background: var(--gold-m);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0; margin-top: 2px;
+  }
+  .gift-title-block { flex: 1; }
+  .gift-eyebrow {
+    font-size: 11px; letter-spacing: 2px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 4px; font-weight: 500;
+  }
+  .gift-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 19px; font-weight: 700; color: var(--ink); line-height: 1.3;
+  }
+  .gift-body { padding: 20px 24px; }
+  .gift-desc {
+    font-size: 14px; color: var(--ink2); line-height: 1.8; margin-bottom: 18px;
+  }
+  .gift-steps {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .gift-step {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--teal-l); border-radius: 10px; padding: 12px 14px;
+  }
+  .step-num {
+    width: 26px; height: 26px; background: var(--teal-m); color: white;
+    border-radius: 50%; font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .step-text { font-size: 13px; color: var(--teal); font-weight: 500; line-height: 1.4; }
+
+  .gift-footer {
+    background: #f7f6f3; border-top: 1px solid var(--line);
+    padding: 14px 24px; display: flex; align-items: center; gap: 10px;
+  }
+  .gift-badge {
+    background: var(--coral-l); color: var(--coral);
+    font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .gift-note { font-size: 12px; color: var(--ink3); line-height: 1.5; }
+
+  /* ─── Divider ─── */
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    margin: 28px 0 0;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--line); }
+  .divider-text {
+    font-size: 12px; color: var(--ink3); letter-spacing: 1px; white-space: nowrap;
+  }
+
+  /* ─── Event Cards ─── */
+  .events-label {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px; font-weight: 600; color: var(--ink);
+    margin: 20px 0 12px; text-align: center;
+  }
+  .event-card {
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s;
+  }
+  .event-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.09); }
+  .event-stripe {
+    height: 5px;
+  }
+  .event-stripe.a { background: var(--teal-m); }
+  .event-stripe.b { background: var(--gold-m); }
+  .event-inner { padding: 18px 20px 16px; }
+  .event-date-row {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+  }
+  .event-date-pill {
+    background: var(--teal-l); color: var(--teal);
+    font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+  }
+  .event-date-pill.b { background: var(--gold-l); color: var(--gold); }
+  .event-time { font-size: 12px; color: var(--ink3); }
+  .event-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .event-meta { display: flex; flex-direction: column; gap: 4px; }
+  .event-row {
+    display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--ink3);
+  }
+  .event-row-icon { flex-shrink: 0; margin-top: 1px; }
+  .vip-banner {
+    background: linear-gradient(135deg, #1a1a18 0%, #2d2d2a 100%);
+    border-radius: 10px; padding: 12px 16px; margin-top: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .vip-star { font-size: 16px; }
+  .vip-text { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .vip-highlight { color: var(--gold-m); font-weight: 600; }
+
+  /* ─── Form ─── */
+  .form-card {
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    margin-top: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+  .form-header {
+    background: var(--teal);
+    padding: 18px 24px;
+  }
+  .form-header-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px; font-weight: 700; color: white; margin-bottom: 4px;
+  }
+  .form-header-sub { font-size: 12px; color: rgba(255,255,255,0.7); }
+  .form-body { padding: 20px; }
+
+  .form-group { margin-bottom: 14px; }
+  .form-label {
+    display: block; font-size: 12px; font-weight: 500; color: var(--ink2);
+    margin-bottom: 5px; letter-spacing: 0.5px;
+  }
+  .required { color: var(--coral); margin-left: 2px; }
+  .form-input, .form-select {
+    width: 100%; padding: 11px 14px;
+    border: 1.5px solid rgba(0,0,0,0.12); border-radius: 9px;
+    font-family: 'Noto Sans TC', sans-serif; font-size: 14px; color: var(--ink);
+    background: var(--bg); outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .form-input:focus, .form-select:focus {
+    border-color: var(--teal-m); background: white;
+  }
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾'; position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%); color: var(--ink3); pointer-events: none; font-size: 13px;
+  }
+
+  .checkbox-group { display: flex; flex-direction: column; gap: 9px; }
+  .checkbox-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #f7f6f3; border-radius: 9px; padding: 11px 13px;
+    cursor: pointer; border: 1.5px solid transparent;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .checkbox-item:has(input:checked) {
+    border-color: var(--teal-m); background: var(--teal-l);
+  }
+  .checkbox-item input { margin-top: 2px; accent-color: var(--teal-m); flex-shrink: 0; }
+  .checkbox-label { font-size: 13px; color: var(--ink2); line-height: 1.4; }
+  .checkbox-sub { font-size: 11px; color: var(--ink3); display: block; margin-top: 2px; }
+
+  .form-submit {
+    width: 100%; padding: 15px;
+    background: var(--teal); color: white;
+    border: none; border-radius: 10px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px; font-weight: 600; letter-spacing: 1px;
+    cursor: pointer; margin-top: 6px;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .form-submit:hover { background: var(--teal-m); }
+  .form-submit:active { transform: scale(0.98); }
+  .form-submit:disabled { background: var(--ink3); cursor: default; }
+
+  .form-note {
+    font-size: 11px; color: var(--ink3); text-align: center;
+    margin-top: 10px; line-height: 1.6;
+  }
+
+  /* ─── Success ─── */
+  .success-screen {
+    display: none; text-align: center;
+    padding: 40px 20px;
+  }
+  .success-icon { font-size: 48px; margin-bottom: 16px; }
+  .success-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px; font-weight: 700; color: var(--teal); margin-bottom: 8px;
+  }
+  .success-body { font-size: 14px; color: var(--ink2); line-height: 1.8; }
+
+  /* ─── Staff panel ─── */
+  .staff-toggle-wrap { margin-top: 32px; text-align: center; }
+  .staff-toggle {
+    background: none; border: 1px solid var(--line);
+    color: var(--ink3); font-size: 12px; padding: 7px 18px;
+    border-radius: 20px; cursor: pointer; font-family: 'Noto Sans TC', sans-serif;
+  }
+  .staff-panel {
+    display: none; margin-top: 12px;
+    background: white; border: 1.5px solid var(--line);
+    border-radius: var(--radius); padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .staff-panel.open { display: block; }
+  .staff-title {
+    font-size: 13px; font-weight: 600; color: var(--ink2);
+    margin-bottom: 14px; letter-spacing: 0.5px;
+  }
+  .staff-search {
+    width: 100%; padding: 10px 13px;
+    border: 1.5px solid rgba(0,0,0,0.12); border-radius: 8px;
+    font-family: 'Noto Sans TC', sans-serif; font-size: 14px;
+    background: var(--bg); margin-bottom: 12px; outline: none;
+  }
+  .staff-search:focus { border-color: var(--teal-m); background: white; }
+  .check-list { display: flex; flex-direction: column; gap: 6px; }
+  .check-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #f7f6f3; border-radius: 8px; padding: 10px 13px;
+    border: 1.5px solid transparent; transition: border-color 0.15s;
+  }
+  .check-row.redeemed { border-color: var(--teal-m); background: var(--teal-l); }
+  .check-row-info { flex: 1; }
+  .check-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .check-detail { font-size: 11px; color: var(--ink3); margin-top: 2px; }
+  .check-btn {
+    padding: 6px 14px; border-radius: 20px; border: none;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif; white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .check-btn.pending { background: var(--teal-m); color: white; }
+  .check-btn.done { background: #c5e8d9; color: var(--teal); cursor: default; }
+  .empty-msg { font-size: 13px; color: var(--ink3); text-align: center; padding: 16px 0; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="logo-area">
+    <div class="logo-mark">生</div>
+    <div class="logo-text">生生護動</div>
+  </div>
+  <div class="header-sub">企業員工健康促進 × ESG 健康管理</div>
+</div>
+
+<div class="section">
+
+  <!-- ── Gift Redemption Card ── -->
+  <div class="gift-card">
+    <div class="gift-header">
+      <div class="gift-icon">🎁</div>
+      <div class="gift-title-block">
+        <div class="gift-eyebrow">專屬好禮</div>
+        <div class="gift-title">恭喜您！<br>健康小物等您來領</div>
+      </div>
+    </div>
+    <div class="gift-body">
+      <p class="gift-desc">感謝您完成資料填寫，您的專屬健康小禮物已準備好，請依下列步驟至現場兌換。</p>
+      <div class="gift-steps">
+        <div class="gift-step">
+          <div class="step-num">1</div>
+          <div class="step-text">出示此頁面給現場工作人員確認</div>
+        </div>
+        <div class="gift-step">
+          <div class="step-num">2</div>
+          <div class="step-text">工作人員核對姓名後完成核銷</div>
+        </div>
+        <div class="gift-step">
+          <div class="step-num">3</div>
+          <div class="step-text">領取健康小物，帶走滿滿好禮！</div>
+        </div>
+      </div>
+    </div>
+    <div class="gift-footer">
+      <div class="gift-badge">注意事項</div>
+      <div class="gift-note">每人限兌換一次，請於活動現場出示本頁面，工作人員核銷後即視為完成兌換。</div>
+    </div>
+  </div>
+
+  <!-- ── Divider ── -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-text">同場加映 · 兩場精彩活動</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- ── Events ── -->
+  <div class="events-label">搶先預約報名意願</div>
+
+  <!-- Event A -->
+  <div class="event-card">
+    <div class="event-stripe a"></div>
+    <div class="event-inner">
+      <div class="event-date-row">
+        <div class="event-date-pill">5/29（五）</div>
+        <div class="event-time">14:00 – 17:00</div>
+      </div>
+      <div class="event-title">人資 × 職護 實戰營<br>企業健康促進 AI 應用工作坊</div>
+      <div class="event-meta">
+        <div class="event-row">
+          <span class="event-row-icon">📍</span>
+          <span>生生優動學院<br>臺北市中正區福州街 10 號 2 樓</span>
+        </div>
+        <div class="event-row" style="margin-top:4px">
+          <span class="event-row-icon">👥</span>
+          <span>人資、職護、EHS、ESG 專業人員</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event B -->
+  <div class="event-card">
+    <div class="event-stripe b"></div>
+    <div class="event-inner">
+      <div class="event-date-row">
+        <div class="event-date-pill b">6/4（四）</div>
+        <div class="event-time">14:00 – 16:30</div>
+      </div>
+      <div class="event-title">AI 精準生理防護 × 心理安全感重建<br>高工時環境下的 EAPs 留才戰略</div>
+      <div class="event-meta">
+        <div class="event-row">
+          <span class="event-row-icon">📍</span>
+          <span>台灣科學園區科學工業同業公會 202 會議室<br>新竹科學園區展業一路 2 號</span>
+        </div>
+        <div class="event-row" style="margin-top:4px">
+          <span class="event-row-icon">👥</span>
+          <span>人資、職護、EHS、ESG 專業人員</span>
+        </div>
+      </div>
+      <!-- VIP -->
+      <div class="vip-banner">
+        <div class="vip-star">⭐</div>
+        <div class="vip-text">
+          <span class="vip-highlight">【上市櫃企業專屬】</span>現場出示員工證或名片（HR／職護／廠護／ESG／EHS 職務），<span class="vip-highlight">退還 $500 報名費</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Registration Form ── -->
+  <div class="form-card">
+    <div class="form-header">
+      <div class="form-header-title">我想報名，請通知我！</div>
+      <div class="form-header-sub">報名頁開放後，我們將以 LINE 或電話優先通知您</div>
+    </div>
+    <div class="form-body">
+
+      <div id="form-area">
+        <div class="form-group">
+          <label class="form-label">姓名<span class="required">*</span></label>
+          <input class="form-input" id="f-name" type="text" placeholder="王小明">
+        </div>
+        <div class="form-group">
+          <label class="form-label">手機號碼<span class="required">*</span></label>
+          <input class="form-input" id="f-phone" type="tel" placeholder="09XX-XXX-XXX">
+        </div>
+        <div class="form-group">
+          <label class="form-label">公司名稱<span class="required">*</span></label>
+          <input class="form-input" id="f-company" type="text" placeholder="XX 股份有限公司">
+        </div>
+        <div class="form-group">
+          <label class="form-label">公司信箱<span class="required">*</span></label>
+          <input class="form-input" id="f-email" type="email" placeholder="name@company.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">職稱<span class="required">*</span></label>
+          <div class="select-wrap">
+            <select class="form-select" id="f-title">
+              <option value="">請選擇</option>
+              <option>人力資源（HR）</option>
+              <option>職業護理師（職護）</option>
+              <option>廠護</option>
+              <option>ESG 專員／主管</option>
+              <option>EHS 環安衛專員</option>
+              <option>其他</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">有興趣的場次<span class="required">*</span>（可複選）</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" id="ev-a" value="5/29 人資×職護實戰營">
+              <div class="checkbox-label">
+                5/29（五）人資 × 職護 實戰營
+                <span class="checkbox-sub">企業健康促進 AI 應用工作坊・臺北中正區</span>
+              </div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="ev-b" value="6/4 EAPs留才戰略">
+              <div class="checkbox-label">
+                6/4（四）AI 精準生理防護 × 心理安全感重建
+                <span class="checkbox-sub">高工時環境下的 EAPs 留才戰略・新竹科學園區</span>
+              </div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="ev-both" value="兩場都有興趣">
+              <div class="checkbox-label">
+                兩場都有興趣！
+                <span class="checkbox-sub">請優先通知，我們會為您保留名額</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button class="form-submit" id="submit-btn" onclick="submitForm()">送出意願登記 →</button>
+        <p class="form-note">您的個人資料僅供本次活動通知使用，不做其他用途。</p>
+      </div>
+
+      <div class="success-screen" id="success-screen">
+        <div class="success-icon">🌿</div>
+        <div class="success-title">登記成功！</div>
+        <div class="success-body">
+          感謝您的意願登記。<br>
+          報名頁一開放，我們會第一時間<br>
+          以 LINE 或電話通知您。<br><br>
+          期待在活動現場與您相見！
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Staff Panel ── -->
+  <div class="staff-toggle-wrap">
+    <button class="staff-toggle" onclick="toggleStaff()">🔧 工作人員核銷入口</button>
+  </div>
+  <div class="staff-panel" id="staff-panel">
+    <div class="staff-title">兌換核銷清單</div>
+    <input class="staff-search" id="staff-search" type="text" placeholder="搜尋姓名或公司…" oninput="filterList()">
+    <div class="check-list" id="check-list">
+      <div class="empty-msg" id="empty-msg">尚無登記資料，或搜尋無結果</div>
+    </div>
+  </div>
+
+</div><!-- /section -->
+
+<script>
+// ── Config ──────────────────────────────────────────────────
+// 請將下方 SCRIPT_URL 換成您的 Google Apps Script 部署網址
+const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+// ── Form Submit ──────────────────────────────────────────────
+async function submitForm() {
+  const name    = document.getElementById('f-name').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const title   = document.getElementById('f-title').value;
+  const events  = [];
+  if (document.getElementById('ev-a').checked)    events.push('5/29 人資×職護實戰營');
+  if (document.getElementById('ev-b').checked)    events.push('6/4 EAPs留才戰略');
+  if (document.getElementById('ev-both').checked) events.push('兩場都有興趣');
+
+  if (!name || !phone || !company || !email || !title || events.length === 0) {
+    alert('請填寫所有必填欄位，並選擇至少一場活動。'); return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = '送出中…';
+
+  const payload = { name, phone, company, email, title, events: events.join('、'), timestamp: new Date().toLocaleString('zh-TW') };
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+
+    // 把資料也存入本地核銷清單（示範用）
+    addToLocalList(payload);
+  } catch (e) {
+    btn.disabled = false; btn.textContent = '送出意願登記 →';
+    alert('網路異常，請稍後再試。');
+  }
+}
+
+// ── Staff List (localStorage for demo) ──────────────────────
+let records = JSON.parse(localStorage.getItem('ss_records') || '[]');
+let redeemed = JSON.parse(localStorage.getItem('ss_redeemed') || '[]');
+
+function addToLocalList(r) {
+  records.push(r);
+  localStorage.setItem('ss_records', JSON.stringify(records));
+  renderList(records);
+}
+
+function renderList(data) {
+  const list = document.getElementById('check-list');
+  const empty = document.getElementById('empty-msg');
+  if (!data || data.length === 0) { empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  list.innerHTML = '';
+  data.forEach((r, idx) => {
+    const done = redeemed.includes(r.phone);
+    const row = document.createElement('div');
+    row.className = 'check-row' + (done ? ' redeemed' : '');
+    row.innerHTML = `
+      <div class="check-row-info">
+        <div class="check-name">${r.name}</div>
+        <div class="check-detail">${r.company}・${r.title}<br>${r.events}</div>
+      </div>
+      <button class="check-btn ${done?'done':'pending'}" onclick="redeem('${r.phone}',this)" ${done?'disabled':''}>
+        ${done ? '已兌換 ✓' : '核銷'}
+      </button>`;
+    list.appendChild(row);
+  });
+}
+
+function redeem(phone, btn) {
+  if (!redeemed.includes(phone)) {
+    redeemed.push(phone);
+    localStorage.setItem('ss_redeemed', JSON.stringify(redeemed));
+  }
+  btn.closest('.check-row').classList.add('redeemed');
+  btn.className = 'check-btn done'; btn.textContent = '已兌換 ✓'; btn.disabled = true;
+}
+
+function filterList() {
+  const q = document.getElementById('staff-search').value.trim().toLowerCase();
+  const filtered = q ? records.filter(r =>
+    r.name.includes(q) || r.company.includes(q) || r.title.includes(q)
+  ) : records;
+  renderList(filtered);
+}
+
+function toggleStaff() {
+  const p = document.getElementById('staff-panel');
+  p.classList.toggle('open');
+  if (p.classList.contains('open')) renderList(records);
+}
+
+// Init
+renderList(records);
+</script>
+</body>
+</html>
