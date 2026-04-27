@@ -6,7 +6,7 @@
 <title>生生護動｜專屬好禮兌換</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
+  :root {h
     --teal:    #0F6E56;
     --teal-l:  #E1F5EE;
     --teal-m:  #1D9E75;
@@ -467,7 +467,7 @@
 <script>
 // ── Config ──────────────────────────────────────────────────
 // 請將下方 SCRIPT_URL 換成您的 Google Apps Script 部署網址
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw8bgjlnHeUPBoIwXut71dccHZQQ0NCQ_9xIArieRp9g7Z-uoE-nIIYBx_l9LotXrpeJw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwaD_L2-CVPxz_e1DhnwYLsY8ZFwvFLPlezm8WV0msU3nPuVnLMH_R7kOGUu3wuVG6a/exec';
 
 // ── Form Submit ──────────────────────────────────────────────
 async function submitForm() {
@@ -560,7 +560,7 @@ function filterList() {
 function toggleStaff() {
   const p = document.getElementById('staff-panel');
   p.classList.toggle('open');
-  if (p.classList.contains('open')) renderList(records);
+  if (p.classList.contains('open')) { renderList([]); fetch(SCRIPT_URL).then(r=>r.json()).then(data=>{ records=data; renderList(data); }).catch(()=>renderList(records)); }
 }
 
 // Init
