@@ -305,10 +305,12 @@
       html += '<button id="redeemBtn" disabled>已完成核銷（不可重複領取）</button>';
     } else {
       html += '<p class="redeem-hint">請將手機交給工作人員，確認後點擊核銷按鈕</p>';
-      html += '<button id="redeemBtn" onclick="redeem('" + redeemId + "')">✔ 工作人員確認核銷</button>';
+      html += '<button id="redeemBtn" data-rid="' + redeemId + '">✔ 工作人員確認核銷</button>';
       html += '<p class="result-msg" id="resultMsg"></p>';
     }
     document.getElementById('userCard').innerHTML = html;
+    const redeemBtnEl = document.getElementById('redeemBtn');
+    if (redeemBtnEl) { redeemBtnEl.addEventListener('click', function() { redeem(this.dataset.rid); }); }
     document.getElementById('loginPage').style.display  = 'none';
     document.getElementById('redeemPage').style.display = 'block';
   }
