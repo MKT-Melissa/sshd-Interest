@@ -1,252 +1,203 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>生生護動｜專屬好禮兌換</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-          *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-          body { font-family: 'Noto Sans TC', sans-serif; background: #f5f7f5; min-height: 100vh; }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生生護動｜專屬好禮兌換</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans TC', sans-serif; background: #f5f7f5; min-height: 100vh; }
 
-          /* ─── 客人登入畫面 ─── */
-          #loginPage {
-                  display: flex; flex-direction: column; align-items: center;
-                  justify-content: center; min-height: 100vh; padding: 32px 24px;
-                  background: linear-gradient(160deg, #e8f5ed 0%, #f5f7f5 60%);
-          }
-          .brand-logo { width: 72px; margin-bottom: 16px; }
-          #loginPage h2 { font-family: 'Noto Serif TC', serif; font-size: 22px; font-weight: 700; color: #1D9E75; margin-bottom: 6px; }
-          #loginPage .subtitle { font-size: 14px; color: #888; text-align: center; margin-bottom: 32px; line-height: 1.7; }
+    #loginPage {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 100vh; padding: 32px 24px;
+      background: linear-gradient(160deg, #e8f5ed 0%, #f5f7f5 60%);
+    }
+    .brand-logo { width: 72px; margin-bottom: 16px; }
+    #loginPage h2 { font-family: 'Noto Serif TC', serif; font-size: 22px; font-weight: 700; color: #1D9E75; margin-bottom: 6px; }
+    #loginPage .subtitle { font-size: 14px; color: #888; text-align: center; margin-bottom: 32px; line-height: 1.7; }
 
-          .input-wrap { width: 100%; max-width: 340px; margin-bottom: 14px; }
-          .input-wrap input {
-                  width: 100%; padding: 16px 18px;
-                  border: 2px solid #dde8e0; border-radius: 14px;
-                  font-size: 18px; outline: none; background: #fff;
-                  font-family: 'Noto Sans TC', sans-serif;
-                  transition: border-color .2s;
-          }
-          .input-wrap input:focus { border-color: #0F6E56; }
-          .input-wrap input::placeholder { color: #bbb; font-size: 15px; }
+    .input-wrap { width: 100%; max-width: 340px; margin-bottom: 14px; }
+    .input-wrap input {
+      width: 100%; padding: 16px 18px;
+      border: 2px solid #dde8e0; border-radius: 14px;
+      font-size: 18px; outline: none; background: #fff;
+      font-family: 'Noto Sans TC', sans-serif;
+      transition: border-color .2s;
+    }
+    .input-wrap input:focus { border-color: #0F6E56; }
+    .input-wrap input::placeholder { color: #bbb; font-size: 15px; }
 
-          #loginBtn {
-                  width: 100%; max-width: 340px; padding: 16px;
-                  background: #0F6E56; color: #fff; border: none;
-                  border-radius: 14px; font-size: 17px; font-weight: 600;
-                  font-family: 'Noto Sans TC', sans-serif;
-                  cursor: pointer; transition: background .2s;
-          }
-          #loginBtn:active { background: #1D9E75; }
-          #loginBtn:disabled { background: #a0c4b8; cursor: not-allowed; }
+    #loginBtn {
+      width: 100%; max-width: 340px; padding: 16px;
+      background: #0F6E56; color: #fff; border: none;
+      border-radius: 14px; font-size: 17px; font-weight: 600;
+      font-family: 'Noto Sans TC', sans-serif;
+      cursor: pointer; transition: background .2s;
+    }
+    #loginBtn:active { background: #1D9E75; }
+    #loginBtn:disabled { background: #a0c4b8; cursor: not-allowed; }
+    .error-msg { color: #c0392b; font-size: 13px; margin-top: 12px; display: none; text-align: center; }
 
-          .error-msg { color: #c0392b; font-size: 13px; margin-top: 12px; display: none; text-align: center; }
+    #redeemPage { display: none; padding: 24px 16px; max-width: 480px; margin: 0 auto; }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-top: 8px; }
+    .top-bar h2 { font-family: 'Noto Serif TC', serif; font-size: 18px; color: #0F6E56; font-weight: 700; }
+    #backBtn { background: none; border: none; font-size: 13px; color: #aaa; cursor: pointer; text-decoration: underline; font-family: 'Noto Sans TC', sans-serif; }
 
-          /* ─── 核銷畫面 ─── */
-          #redeemPage { display: none; padding: 24px 16px; max-width: 480px; margin: 0 auto; }
+    .card { background: #fff; border-radius: 20px; padding: 28px 24px; box-shadow: 0 4px 20px rgba(0,0,0,.07); }
+    .card .name { font-family: 'Noto Serif TC', serif; font-size: 24px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+    .card .company { font-size: 14px; color: #777; margin-bottom: 2px; }
+    .card .reg-time { font-size: 12px; color: #bbb; margin-top: 12px; }
 
-          .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-top: 8px; }
-          .top-bar h2 { font-family: 'Noto Serif TC', serif; font-size: 18px; color: #0F6E56; font-weight: 700; }
-          #backBtn { background: none; border: none; font-size: 13px; color: #aaa; cursor: pointer; text-decoration: underline; font-family: 'Noto Sans TC', sans-serif; }
+    .status-badge { display: inline-block; margin-top: 16px; padding: 7px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+    .status-badge.pending { background: #e8f5ed; color: #0F6E56; }
+    .status-badge.done    { background: #f0f0f0; color: #999; }
+    .redeem-hint { margin-top: 10px; font-size: 13px; color: #0F6E56; line-height: 1.5; }
+    .redeem-time-info { margin-top: 10px; font-size: 13px; color: #999; }
 
-          .card {
-                  background: #fff; border-radius: 20px;
-                  padding: 28px 24px; box-shadow: 0 4px 20px rgba(0,0,0,.07);
-          }
-          .card .name { font-family: 'Noto Serif TC', serif; font-size: 24px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
-          .card .company { font-size: 14px; color: #777; margin-bottom: 2px; }
-          .card .reg-time { font-size: 12px; color: #bbb; margin-top: 12px; }
+    #redeemBtn {
+      width: 100%; margin-top: 24px; padding: 17px;
+      background: #0F6E56; color: #fff; border: none;
+      border-radius: 14px; font-size: 17px; font-weight: 600;
+      font-family: 'Noto Sans TC', sans-serif;
+      cursor: pointer; transition: background .2s;
+    }
+    #redeemBtn:disabled { background: #c0c0c0; cursor: not-allowed; }
 
-          .status-badge {
-                  display: inline-block; margin-top: 16px;
-                  padding: 7px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;
-          }
-          .status-badge.pending { background: #e8f5ed; color: #0F6E56; }
-          .status-badge.done    { background: #f0f0f0; color: #999; }
+    .result-msg { margin-top: 14px; font-size: 14px; text-align: center; display: none; padding: 12px; border-radius: 10px; }
+    .result-msg.success { color: #0F6E56; background: #e8f5ed; }
+    .result-msg.error   { color: #c0392b; background: #fde8e8; }
 
-          .redeem-hint { margin-top: 10px; font-size: 13px; color: #0F6E56; line-height: 1.5; }
-          .redeem-time-info { margin-top: 10px; font-size: 13px; color: #999; }
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: middle; margin-right: 6px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
 
-          #redeemBtn {
-                  width: 100%; margin-top: 24px; padding: 17px;
-                  background: #0F6E56; color: #fff; border: none;
-                  border-radius: 14px; font-size: 17px; font-weight: 600;
-                  font-family: 'Noto Sans TC', sans-serif;
-                  cursor: pointer; transition: background .2s;
-          }
-          #redeemBtn:disabled { background: #c0c0c0; cursor: not-allowed; }
+<div id="loginPage">
+  <img src="logo.png" class="brand-logo" alt="logo" onerror="this.style.display='none'">
+  <h2>生生護動｜專屬好禮兌換</h2>
+  <p class="subtitle">請輸入您的手機號碼以驗證身份<br>工作人員將協助完成禮品核銷</p>
+  <div class="input-wrap">
+    <input type="tel" id="phoneInput" placeholder="09xxxxxxxx" maxlength="15" inputmode="numeric">
+  </div>
+  <button id="loginBtn" onclick="findUser()">查詢我的兌換資格 →</button>
+  <p class="error-msg" id="loginError"></p>
+</div>
 
-          .result-msg { margin-top: 14px; font-size: 14px; text-align: center; display: none; padding: 12px; border-radius: 10px; }
-          .result-msg.success { color: #0F6E56; background: #e8f5ed; }
-          .result-msg.error   { color: #c0392b; background: #fde8e8; }
+<div id="redeemPage">
+  <div class="top-bar">
+    <h2>🎁 好禮兌換確認</h2>
+    <button id="backBtn" onclick="goBack()">← 重新查詢</button>
+  </div>
+  <div class="card" id="userCard"></div>
+</div>
 
-          .spinner {
-                  display: inline-block; width: 16px; height: 16px;
-                  border: 2px solid rgba(255,255,255,.4); border-top-color: #fff;
-                  border-radius: 50%; animation: spin .7s linear infinite; vertical-align: middle; margin-right: 6px;
-          }
-          @keyframes spin { to { transform: rotate(360deg); } }
-        </style>
-  </head>
-  <body>
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwaD_L2-CVPxz_e1DhnwYLsY8ZFwvFLPlezm8WV0msU3nPuVnLMH_R7kOGUu3wuVG6a/exec';
+  let currentRecord = null;
 
-    <!-- ① 客人登入畫面：輸入手機號碼 -->
-    <div id="loginPage">
-        <img src="logo.png" class="brand-logo" alt="logo" onerror="this.style.display='none'">
-        <h2>生生護動｜專屬好禮兌換</h2>
-      <p class="subtitle">請輸入您的手機號碼以驗證身份<br>工作人員將協助完成禮品核銷</p>p>
-      <div class="input-wrap">
-          <input type="tel" id="phoneInput" placeholder="09xxxxxxxx" maxlength="15" inputmode="numeric">
-      </div>div>
-      <button id="loginBtn" onclick="findUser()">查詢我的兌換資格 →</button>button>
-      <p class="error-msg" id="loginError"></p>p>
-    </div>div>
-  
-  <!-- ② 核銷畫面：只顯示該客人資料 -->
-  <div id="redeemPage">
-    <div class="top-bar">
-        <h2>🎁 好禮兌換確認</h2>
-        <button id="backBtn" onclick="goBack()">← 重新查詢</button>button>
-    </div>div>
-    <div class="card" id="userCard"></div>div>
-  </div>div>
-  
-  <script>
-      // ── Apps Script 部署網址（保持原有網址，新增 action 參數）
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwaD_L2-CVPxz_e1DhnwYLsY8ZFwvFLPlezm8WV0msU3nPuVnLMH_R7kOGUu3wuVG6a/exec';
+  function normalizePhone(p) {
+    return String(p).replace(/[\s\-]/g, '').replace(/^\+886/, '0');
+  }
 
-      let currentRecord = null;
+  async function findUser() {
+    const rawPhone = document.getElementById('phoneInput').value.trim();
+    const phone    = normalizePhone(rawPhone);
+    const errEl    = document.getElementById('loginError');
+    const btn      = document.getElementById('loginBtn');
+    if (!phone || phone.length < 8) { showLoginError('請輸入正確的手機號碼'); return; }
+    errEl.style.display = 'none';
+    btn.innerHTML = '<span class="spinner"></span>查詢中…';
+    btn.disabled  = true;
+    try {
+      const res  = await fetch(SCRIPT_URL + '?action=getByPhone&phone=' + encodeURIComponent(phone));
+      const data = await res.json();
+      if (!data.found) { showLoginError(data.msg || '查無此手機號碼，請確認後重試'); resetLoginBtn(); return; }
+      currentRecord = data;
+      renderRedeemPage(data);
+    } catch (err) {
+      showLoginError('網路錯誤，請稍後再試');
+      resetLoginBtn();
+    }
+  }
 
-      // 正規化電話（去除空白/破折號，+886 轉 0 開頭）
-      function normalizePhone(p) {
-            return String(p).replace(/[\s\-]/g, '').replace(/^\+886/, '0');
+  function renderRedeemPage(data) {
+    const isRedeemed = data['核銷時間'] && String(data['核銷時間']).trim() !== '';
+    const redeemId = data['id'];
+    let html = '<p class="name">' + (data['姓名'] || data['客戶名稱'] || '貴賓') + '</p>';
+    html += '<p class="company">' + (data['公司名稱'] || '') + (data['職稱'] ? '・' + data['職稱'] : '') + '</p>';
+    html += '<p class="reg-time">報名時間：' + (data['建立時間'] || '-') + '</p>';
+    html += '<span class="status-badge ' + (isRedeemed ? 'done' : 'pending') + '">';
+    html += (isRedeemed ? '✅ 已核銷' : '🎁 尚未核銷') + '</span>';
+    if (isRedeemed) {
+      html += '<p class="redeem-time-info">核銷時間：' + data['核銷時間'] + '</p>';
+      html += '<button id="redeemBtn" disabled>已完成核銷（不可重複領取）</button>';
+    } else {
+      html += '<p class="redeem-hint">請將手機交給工作人員，確認後點擊核銷按鈕</p>';
+      html += '<button id="redeemBtn" onclick="redeem('' + redeemId + '')">✔ 工作人員確認核銷</button>';
+      html += '<p class="result-msg" id="resultMsg"></p>';
+    }
+    document.getElementById('userCard').innerHTML = html;
+    document.getElementById('loginPage').style.display  = 'none';
+    document.getElementById('redeemPage').style.display = 'block';
+  }
+
+  async function redeem(id) {
+    const btn = document.getElementById('redeemBtn');
+    const msg = document.getElementById('resultMsg');
+    btn.innerHTML = '<span class="spinner"></span>核銷中…';
+    btn.disabled  = true;
+    msg.style.display = 'none';
+    try {
+      const res  = await fetch(SCRIPT_URL + '?action=redeem&id=' + encodeURIComponent(id));
+      const data = await res.json();
+      msg.style.display = 'block';
+      if (data.success) {
+        msg.textContent = '✅ 核銷成功！禮物已確認領取';
+        msg.className   = 'result-msg success';
+        btn.textContent = '已核銷（不可重複領取）';
+        currentRecord['核銷時間'] = data.redeemTime;
+        setTimeout(function() { renderRedeemPage(currentRecord); }, 1500);
+      } else {
+        msg.textContent = '⚠️ ' + data.msg;
+        msg.className   = 'result-msg error';
+        btn.textContent = '✔ 工作人員確認核銷';
+        btn.disabled    = false;
       }
+    } catch (err) {
+      msg.textContent   = '網路錯誤，請稍後重試';
+      msg.className     = 'result-msg error';
+      msg.style.display = 'block';
+      btn.textContent   = '✔ 工作人員確認核銷';
+      btn.disabled      = false;
+    }
+  }
 
-      // ── 查詢客人資料
-      async function findUser() {
-            const rawPhone = document.getElementById('phoneInput').value.trim();
-            const phone    = normalizePhone(rawPhone);
-            const errEl    = document.getElementById('loginError');
-            const btn      = document.getElementById('loginBtn');
+  function goBack() {
+    currentRecord = null;
+    document.getElementById('phoneInput').value = '';
+    document.getElementById('loginError').style.display = 'none';
+    resetLoginBtn();
+    document.getElementById('redeemPage').style.display = 'none';
+    document.getElementById('loginPage').style.display  = 'flex';
+  }
 
-            if (!phone || phone.length < 8) {
-                    showLoginError('請輸入正確的手機號碼');
-                    return;
-            }
+  function showLoginError(msg) {
+    var el = document.getElementById('loginError');
+    el.textContent   = msg;
+    el.style.display = 'block';
+  }
+  function resetLoginBtn() {
+    var btn = document.getElementById('loginBtn');
+    btn.innerHTML = '查詢我的兌換資格 →';
+    btn.disabled  = false;
+  }
 
-            errEl.style.display = 'none';
-            btn.innerHTML = '<span class="spinner"></span>查詢中…';
-            btn.disabled  = true;
-
-            try {
-                    const res  = await fetch(`${SCRIPT_URL}?action=getByPhone&phone=${encodeURIComponent(phone)}`);
-                    const data = await res.json();
-
-                    if (!data.found) {
-                              showLoginError(data.msg || '查無此手機號碼，請確認後重試');
-                              resetLoginBtn();
-                              return;
-                    }
-
-                    currentRecord = data;
-                    renderRedeemPage(data);
-
-            } catch (err) {
-                    showLoginError('網路錯誤，請稍後再試');
-                    resetLoginBtn();
-            }
-      }
-
-      // ── 顯示核銷畫面
-      function renderRedeemPage(data) {
-            const isRedeemed = data['核銷時間'] && String(data['核銷時間']).trim() !== '';
-
-            document.getElementById('userCard').innerHTML = `
-                  <p class="name">${data['姓名'] || data['客戶名稱'] || '貴賓'}</p>
-                        <p class="company">${data['公司名稱'] || ''}${data['職稱'] ? '・' + data['職稱'] : ''}</p>
-                              <p class="reg-time">報名時間：${data['建立時間'] || '-'}</p>
-
-                                    <span class="status-badge ${isRedeemed ? 'done' : 'pending'}">
-                                            ${isRedeemed ? '✅ 已核銷' : '🎁 尚未核銷'}
-                                                  </span>
-
-                                                        ${isRedeemed
-                                                                  ? `<p class="redeem-time-info">核銷時間：${data['核銷時間']}</p>
-                                                                             <button id="redeemBtn" disabled>已完成核銷（不可重複領取）</button>`
-                                                                  : `<p class="redeem-hint">請將手機交給工作人員，確認後點擊核銷按鈕</p>
-                                                                             <button id="redeemBtn" onclick="redeem('${data['id']}')">✔ 工作人員確認核銷</button>
-                                                                                        <p class="result-msg" id="resultMsg"></p>`
-                                                        }
-                                                            `;
-
-            document.getElementById('loginPage').style.display  = 'none';
-            document.getElementById('redeemPage').style.display = 'block';
-      }
-
-      // ── 執行核銷
-      async function redeem(id) {
-            const btn = document.getElementById('redeemBtn');
-            const msg = document.getElementById('resultMsg');
-
-            btn.innerHTML = '<span class="spinner"></span>核銷中…';
-            btn.disabled  = true;
-        msg.style.display = 'none';
-
-            try {
-                    const res  = await fetch(`${SCRIPT_URL}?action=redeem&id=${encodeURIComponent(id)}`);
-                    const data = await res.json();
-
-                    msg.style.display = 'block';
-
-                    if (data.success) {
-                              msg.textContent = '✅ 核銷成功！禮物已確認領取';
-                              msg.className   = 'result-msg success';
-                              btn.textContent = '已核銷（不可重複領取）';
-                              // 1.5 秒後重新渲染顯示核銷時間
-                              currentRecord['核銷時間'] = data.redeemTime;
-                              setTimeout(() => renderRedeemPage(currentRecord), 1500);
-                    } else {
-                              msg.textContent = '⚠️ ' + data.msg;
-                              msg.className   = 'result-msg error';
-                              btn.textContent = '✔ 工作人員確認核銷';
-                              btn.disabled    = false;
-                    }
-
-            } catch (err) {
-                    msg.textContent   = '網路錯誤，請稍後重試';
-                    msg.className     = 'result-msg error';
-                    msg.style.display = 'block';
-                    btn.textContent   = '✔ 工作人員確認核銷';
-                    btn.disabled      = false;
-            }
-      }
-
-      // ── 返回登入畫面
-      function goBack() {
-            currentRecord = null;
-            document.getElementById('phoneInput').value = '';
-            document.getElementById('loginError').style.display = 'none';
-            resetLoginBtn();
-            document.getElementById('redeemPage').style.display = 'none';
-            document.getElementById('loginPage').style.display  = 'flex';
-      }
-
-      // ── 工具函式
-      function showLoginError(msg) {
-            const el = document.getElementById('loginError');
-            el.textContent   = msg;
-            el.style.display = 'block';
-      }
-      function resetLoginBtn() {
-            const btn = document.getElementById('loginBtn');
-            btn.innerHTML = '查詢我的兌換資格 →';
-            btn.disabled  = false;
-      }
-
-      // Enter 鍵觸發查詢
-      document.getElementById('phoneInput').addEventListener('keypress', e => {
-            if (e.key === 'Enter') findUser();
-      });
-  </script>
-  </body>
+  document.getElementById('phoneInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') findUser();
+  });
+</script>
+</body>
 </html>
